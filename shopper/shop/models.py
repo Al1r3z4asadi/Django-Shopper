@@ -13,15 +13,14 @@ class Products(models.Model):
     desc = models.TextField(null=True)
     price = models.BigIntegerField()
     title = models.CharField(max_length=100)
+    purchase_id = models.ForeignKey('Purchase' , on_delete = models.CASCADE , null = True)
 
 
 
-
-
+    
 class Purchase(models.Model):
     
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    p_id = models.ForeignKey(Products , on_delete=models.CASCADE)
     time_purchased = models.DateTimeField(default=timezone.now)
-    
+
 
